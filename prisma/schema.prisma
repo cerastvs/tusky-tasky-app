@@ -25,6 +25,12 @@ enum TaskStatus{
   MISSED
 }
 
+enum TaskType{
+  DAILY
+  ASSIGNED
+  SPECIFIC
+}
+
 model Task{
   id Int @id @default(autoincrement())
   user User @relation(fields: [userId], references: [id])
@@ -34,6 +40,7 @@ model Task{
   description String?
   deadline DateTime
   status TaskStatus @default(PENDING)
+  type TaskType @default(SPECIFIC)
 
   createdAt DateTime @default(now())
   updatedAt DateTime? @updatedAt

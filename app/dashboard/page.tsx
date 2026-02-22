@@ -40,7 +40,7 @@ export default function Dashboard() {
 
   return (
     <div className="flex h-screen font-sans">
-      <aside className="w-[220px] shrink-0 bg-white border-r border-gray-200 flex flex-col px-4 py-6">
+      <aside className="w-[320px] shrink-0 bg-white border-r border-gray-200 flex flex-col px-4 py-6">
         <div className="font-bold text-lg tracking-wider mb-8">TUSKY</div>
         <nav className="flex flex-col gap-1">
           <a
@@ -70,7 +70,7 @@ export default function Dashboard() {
           <div className="w-10 h-10 rounded-full bg-gray-900" />
         </header>
 
-        <main className="flex-1 overflow-y-auto bg-gray-100 px-10 py-8">
+        <main className="flex-1 overflow-y-auto bg-gray-100 px-10 py-8 w-[70%]">
           <section className="mb-10">
             <h2 className="text-[28px] font-bold m-0 mb-1">
               LIEU RIK&apos;S ROUTINE
