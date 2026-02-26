@@ -40,7 +40,7 @@ model Task{
   description String?
   deadline DateTime
   status TaskStatus @default(PENDING)
-  type TaskType @default(SPECIFIC)
+  tags TaskType[] @default([SPECIFIC])
 
   createdAt DateTime @default(now())
   updatedAt DateTime? @updatedAt
