@@ -38,7 +38,8 @@ model Task{
 
   title String
   description String?
-  time DateTime
+  timeStart DateTime?
+  timeEnd DateTime?
   status TaskStatus @default(PENDING)
   tags TaskType[] @default([SPECIFIC])
 
