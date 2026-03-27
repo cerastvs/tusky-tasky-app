@@ -1,9 +1,15 @@
+"use client";
+
+import { ActiveUser } from "@/context/ActiveUser";
+import { useContext } from "react";
+
 type Props = {
   children: React.ReactNode;
   pageName: string;
 };
 
 export default function HeaderSidebarLayout({ children, pageName }: Props) {
+  let user = useContext(ActiveUser);
   return (
     <div className="flex h-screen font-sans">
       <aside className="w-[320px] shrink-0 bg-white border-r border-gray-200 flex flex-col px-4 py-6">
@@ -33,7 +39,7 @@ export default function HeaderSidebarLayout({ children, pageName }: Props) {
       <div className="flex-1 flex flex-col min-w-0">
         <header className="flex items-center justify-between px-7 h-[60px] bg-white border-b border-gray-200 shrink-0">
           <span className="font-bold text-base tracking-widest">
-            {pageName.toUpperCase()}
+            {pageName.toUpperCase()} • {user?.name}
           </span>
           <div className="w-10 h-10 rounded-full bg-gray-900" />
         </header>
