@@ -25,10 +25,13 @@ export default function TaskSection({ tasks, tag, head }: Props) {
       </p>
 
       <div className="bg-white rounded-xl p-5 shadow-sm flex flex-col gap-3">
-        <button className="w-fit self-end text-blue-600">
-          Edit daily routines
-        </button>
-
+        {head == "DAILY ROUTINE" ? (
+          <button className="w-fit self-end text-blue-600">
+            Edit daily routines
+          </button>
+        ) : (
+          <></>
+        )}
         {tasks.map((task) => (
           <div
             key={task.id}

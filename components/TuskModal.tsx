@@ -1,6 +1,6 @@
 import React from "react";
 import { Task } from "@/app/generated/prisma/client";
-
+import MarkerButton from "./MarkerButton";
 type Props = {
   modalOpen: boolean;
   setModalOpen: (open: boolean) => void;
@@ -21,7 +21,7 @@ function TuskModal({ modalOpen, setModalOpen, task }: Props) {
     });
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
       <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 p-6 animate-scale-up">
         <div className="flex justify-between items-center border-b border-gray-200 pb-3 mb-4">
           <h3 className="text-2xl font-bold text-gray-900">{task.title}</h3>
@@ -81,9 +81,7 @@ function TuskModal({ modalOpen, setModalOpen, task }: Props) {
           >
             Close
           </button>
-          <button className="px-6 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition">
-            Save Changes
-          </button>
+          <MarkerButton status={task.status} taskId={task.id} />
         </div>
       </div>
     </div>
