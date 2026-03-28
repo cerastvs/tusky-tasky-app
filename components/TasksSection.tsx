@@ -5,6 +5,7 @@ import { ActiveUser } from "@/context/ActiveUser";
 import { TaskType } from "@/app/generated/prisma/enums";
 import { Task } from "@/app/generated/prisma/browser";
 import TuskModal from "./TuskModal";
+import ModalContainer from "./ModalContainer";
 type Props = {
   tasks: Task[];
   tag: TaskType[];
@@ -61,12 +62,9 @@ export default function TaskSection({ tasks, tag, head }: Props) {
           </div>
         ))}
       </div>
-
-      <TuskModal
-        modalOpen={showModal}
-        setModalOpen={setShowModal}
-        task={activeTask}
-      ></TuskModal>
+      <ModalContainer modalOpen={showModal}>
+        <TuskModal setModalOpen={setShowModal} task={activeTask}></TuskModal>
+      </ModalContainer>
     </section>
   );
 }

@@ -36,5 +36,9 @@ export default function MarkerButton({ status, taskId }: Props) {
     );
   }
 
-  return <button>Other</button>;
+  return (
+    <button disabled className="px-6 py-2 rounded-lg bg-gray-300 text-white">
+      Missed
+    </button>
+  );
 }

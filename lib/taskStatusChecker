@@ -1,0 +1,9 @@
+export default function getStatus(timeEnd: Date) {
+  if (new Date() > new Date(timeEnd)) {
+    return "MISSED";
+  } else if (new Date() < new Date(timeEnd)) {
+    return "PENDING";
+  } else {
+    return "...";
+  }
+}
