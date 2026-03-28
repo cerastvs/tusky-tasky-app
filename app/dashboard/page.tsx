@@ -1,34 +1,24 @@
+"use client";
+
 import HeaderSidebarLayout from "@/components/HeaderSidebarLayout";
 import TaskSection from "@/components/TasksSection";
 import { TaskType } from "../generated/prisma/enums";
-import prisma from "@/lib/client";
+import { useEffect, useState } from "react";
+import { Task } from "@/app/generated/prisma/browser";
 
-export default async function Dashboard() {
-  const start = new Date();
-  const end = new Date();
-  end.setDate(start.getDate() + 7);
+export default function Dashboard() {
+  const [dailyTasks, setDailyTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
-  const tasks = await prisma.task.findMany({
-    where: {
-      userId: 1,
-      timeStart: {
-        gte: start,
-        lte: end,
-      },
-    },
-    orderBy: {
-      timeStart: "asc",
-    },
-  });
-
-  const dailyTasks = await prisma.task.findMany({
-    where: {
-      userId: 1,
-      tags: {
-        has: TaskType.DAILY,
-      },
-    },
-  });
+  useEffect(() => {
+    fetch("/api/task")
+      .then((res) => res.json())
+      .then((data) => {
+        setDailyTasks(data.dailyTasks ?? []);
+        setTasks(data.tasks ?? []);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <HeaderSidebarLayout pageName="Dashboard">

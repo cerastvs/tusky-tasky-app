@@ -1,6 +1,5 @@
 import HeaderSidebarLayout from "@/components/HeaderSidebarLayout";
-import TaskSection from "@/components/TasksSection";
-import { TaskType } from "../generated/prisma/enums";
+
 import prisma from "@/lib/client";
 
 export default async function Dashboard() {
